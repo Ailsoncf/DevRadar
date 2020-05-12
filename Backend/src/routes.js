@@ -9,4 +9,7 @@ routes.post('/devs', DevController.store )
 
 routes.get('/search', SearchController.index)
 
+
+routes.delete('/devs/:github_username', DevController.destroy)
+
 module.exports = routes

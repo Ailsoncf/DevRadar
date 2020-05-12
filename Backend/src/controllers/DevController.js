@@ -45,5 +45,15 @@ module.exports = {
         }
     
         return response.json(dev)
-    }
+    },
+    async destroy(req,  res){
+        const { github_username } = req.params;
+        const findDev =  await Dev.findOne({ github_username});
+        if (findDev){
+          const dev = await Dev.deleteOne({ github_username: github_username});
+          return dev.deletedCount == 1 ? res.json({message: "Dev deleted."}):res.json({message: "No Dev deleted."})
+        }
+    
+        return res.json({message: "No Dev founded."});
+      }
 }

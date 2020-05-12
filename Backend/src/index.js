@@ -5,6 +5,7 @@ const http = require('http')
 const routes = require('./routes')
 
 const { setupWebsocket } = require('./websocket')
+require('dotenv').config()
 
 
 const app = express()
@@ -12,7 +13,7 @@ const server = http.Server(app)
 
 setupWebsocket(server)
 
-mongoose.connect('mongodb+srv://Ailson:Bobocao@cluster0-bkno7.mongodb.net/week10?retryWrites=true&w=majority',{ 
+mongoose.connect(process.env.DB_URL,{ 
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
