@@ -46,14 +46,14 @@ module.exports = {
     
         return response.json(dev)
     },
-    async destroy(req,  res){
-        const { github_username } = req.params;
-        const findDev =  await Dev.findOne({ github_username});
+    async delete(request, response){
+        const { id } = request.params;
+        const findDev = await Dev.findOne({ _id: request.params.id })
         if (findDev){
-          const dev = await Dev.deleteOne({ github_username: github_username});
-          return dev.deletedCount == 1 ? res.json({message: "Dev deleted."}):res.json({message: "No Dev deleted."})
+          const dev = await Dev.deleteOne({ _id: id});
+          return dev.deletedCount == 1 ? response.json({message: "Dev deleted."}):response.json({message: "No Dev deleted."})
+        }else{
+            return response.json({message: "No Dev founded."})
         }
-    
-        return res.json({message: "No Dev founded."});
       }
 }
