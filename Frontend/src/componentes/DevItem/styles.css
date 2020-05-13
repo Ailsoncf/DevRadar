@@ -20,7 +20,20 @@ li.dev-item header img {
 li.dev-item header .user-info {
     margin-left: 10px;
 }
-  
+
+li.dev-item header button {
+    width: 50px;
+    height: 50px;
+    border: 0px ;
+    background: transparent;
+    margin-left: 55px;
+    margin-top: -20px;
+}
+
+li.dev-item header button:hover {
+    border-color: #999;
+    opacity: 0.8
+}  
 .user-info strong {
     display: block;
     font-size: 16px;
