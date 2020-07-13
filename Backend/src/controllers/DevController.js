@@ -50,7 +50,7 @@ module.exports = {
   },
   async delete(request, response) {
     const { id } = request.params
-    const findDev = await Dev.findOne({ _id: id })
+    const findDev = await Dev.findOne({ _id: request.params.id })
     if (findDev) {
       const dev = await Dev.deleteOne({ _id: id })
       return dev.deletedCount == 1
