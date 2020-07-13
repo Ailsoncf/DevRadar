@@ -50,14 +50,14 @@ module.exports = {
   },
   async delete(request, response) {
     const { id } = request.params
-    const findDev = await Dev.findOne({ _id: request.params.id })
+    const findDev = await Dev.findOne({ _id: id })
     if (findDev) {
       const dev = await Dev.deleteOne({ _id: id })
       return dev.deletedCount == 1
         ? response.json({ message: "Dev deleted." })
         : response.json({ message: "No Dev deleted." })
     } else {
-      return response.json({ message: "No Dev founded." })
+      return response.json({ message: "No Dev found." })
     }
   },
 }
