@@ -60,4 +60,23 @@ module.exports = {
       return response.json({ message: "No Dev found." })
     }
   },
+
+  async update(request, response) {
+    const { techs, latitude, longitude } = request.body
+
+    const location = {
+      type: "Point",
+      coordinates: [longitude, latitude],
+    }
+
+    const devUpdate = await Dev.findByIdAndUpdate(
+      request.params.id,
+      {
+        techs,
+        location,
+      },
+      { new: true }
+    )
+    return response.json(devUpdate)
+  },
 }
